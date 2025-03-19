@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <!--Copyright © 2025 Kamenska-Knjiga Group. All rights reserved.-->
+
+  <meta charset="UTF-8">
+  <title class="notranslate">Kamenska-Knjiga</title>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name=apple-mobile-web-app-capable content=yes>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/Icon.ico" type="image/x-icon">
+  <style>
+    body{
+    font-family: "Roboto", serif;
+    background-color:white;
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    overflow-x:hidden;
+    overflow-y:auto;
+    }
+    
+    :root {
+        --Header-Container-Height:15vh;
+        --Header-Icon-Height:50px;
+        --Header-Font-Size:50px;
+    
+        --Post-Image-Container-Transform:translateY(-50%);
+        --Post-Border-Color-O:rgba(0, 0, 0, 0.2);
+        --Post-Container-Left-D:5vw;
+        --Post-Size-Height:30vw;
+        --Post-Size-Width:30vw;  
+    
+        --User-Container-Left-D:0%;
+        --User-Name-Font-Size:32px;
+        --User-Icon-Height:50px;
+     
+        --Date-Font-Size:15px;
+        --Date-Icon-Height:15px;
+        --Date-Icon-Left-D:-20px;
+    
+        --Comment-Container-Left-D:0%;
+        --Comment-Container-Height:auto;
+        --Comment-Container-Width:100%;
+        --Comment-Container-Top-D:calc(50px + 2%);
+        --Comment-Text-Margin-R:10px;
+        --Comment-Text-Margin-L:0px;
+        --Comment-Font-Size:20px;
+    
+        --Menu-Elements-Height:15vh;
+        --Menu-Icons-Height:30px;
+        --Menu-Font-Size:32px;
+    
+        --Menu-Element1-Distance:0px;
+        --Menu-Element2-Distance:calc(15vh + 1px);
+        --Menu-Element3-Distance:calc(30vh + 2px);
+        --Menu-Element4-Distance:calc(45vh + 3px); 
+        --Menu-Element5-Distance:calc(60vh + 4px);
+    
+        --Close-MenuButton-Height:50px;
+        --Submit-Button-Height:100px;
+        --Reset-Button-Height:100px;
+    
+        --Selector-Element-Width:35%;
+        --Option-Font-Size:20px;
+    
+        .Post-Image-Container-Projection{
+            transform:translateY(-50%);
+            left:102%;
+            top:50%; 
+        }
+    
+        .User-Container{
+            transform:translateY(100%);
+            bottom:100%;
+           }
+    
+        .Date-Container{
+            top:102%;
+            left:1%;
+            }
+    
+        .Comment-Container{
+            transform:translateX(0%);
+            }
+      }
+    
+    
+    
+      @media only screen and (max-width: 480px){
+        :root {
+            --Header-Container-Height:10vh;
+            --Header-Font-Size:27px;
+            --Header-Icon-Height:25px;
+    
+            --Post-Image-Container-Transform:translate(-50%, -50%); 
+            --Post-Border-Color-O:rgba(0, 0, 0, 0.5);
+            --Post-Container-Left-D:50%;
+            --Post-Size-Height:calc(100vw);   
+            --Post-Size-Width:calc(100vw);     
+                                              
+            --User-Name-Font-Size:18px;  
+            --User-Container-Left-D:1%;
+            --User-Icon-Height:30px;
+        
+            --Date-Icon-Left-D:-30%;
+            --Date-Icon-Height:14px;
+       
+            --Date-Font-Size:13px;
+    
+            --Comment-Container-Height:17vh;
+            --Comment-Container-Top-D:102%;
+            --Comment-Container-Left-D:50%;
+            --Comment-Container-Width:98vw;
+            --Comment-Text-Margin-L:0px;
+            --Comment-Text-Margin-R:0px;
+            --Comment-Font-Size:16px;
+    
+            --Menu-Elements-Height:10vh;
+            --Menu-Icons-Height:15px;
+            --Menu-Font-Size:18px; 
+       
+            --Menu-Element1-Distance:0px;
+            --Menu-Element2-Distance:calc(10vh + 1px);
+            --Menu-Element3-Distance:calc(20vh + 2px);
+            --Menu-Element4-Distance:calc(30vh + 3px); 
+            --Menu-Element5-Distance:calc(40vh + 4px);
+    
+            --Close-MenuButton-Height:40px;
+            --Submit-Button-Height:120px;
+            --Reset-Button-Height:120px;
+    
+            --Selector-Element-Width:auto;
+            --Option-Font-Size: 15px;
+    
+    
+            .Post-Image-Container-Projection{
+                transform:translate(-50%, -50%);
+                left:50%;
+                top:50%; 
+                }
+    
+            .User-Container{
+                transform:translateY(0%);
+                bottom:102%; 
+              
+                }
+    
+            .Date-Container{
+                transform:translateY(-100%);
+                top:-2%;
+                left:1%;
+                }
+    
+            .Date-Text{
+                transform:translate(-100%, -50%);
+                left:99%;
+                }
+    
+            .Date-Icon{
+                transform:translate(-625%, -50%);
+                left:100%;
+                }
+    
+            .Comment-Container{
+                transform:translateX(-50%);
+                }    
+        }
+      }
+    
+    .Container-Header{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+        height:var(--Header-Container-Height);
+        background-color:#fff;
+        width:calc(100vw);
+        position:fixed;
+        padding:0px;
+        z-index:10;
+        margin:0px;
+        left:0%; 
+        top:0vh;     
+        }
+    
+    .Logo{
+        transform:translate(-50%, -50%);
+        position:absolute;
+        cursor:pointer; 
+        height:75%;
+        left:50%;
+        top:50%;
+        }
+    
+    .BackHomeButton, .OpenFilterButton {
+        height:var(--Header-Icon-Height); 
+        transform:translateY(-50%);
+        position:absolute;
+        cursor:pointer;
+        z-index:11;
+        top:50%;
+        }
+    
+    .OpenFilterButton{
+        left:2%;
+        }
+    
+    .BackHomeButton{
+        right:2%;}
+    
+    .Copyright {
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(0, 0, 0, 0.2); 
+        font-size: calc(13px + 0.390625vw); 
+        background-color:#fff;
+        text-align:center;
+        font-weight:light;
+        position:fixed;
+        z-index:10000;
+        padding:5px;
+        width:100vw;
+        margin:0px;
+        bottom:0%;    
+        left:0%;
+        }
+    
+    .Post{
+        border-bottom: 1px solid var(--Post-Border-Color-O);
+        transform:translateX(-50%); background-color:rgb(255, 255, 255);
+        height:calc(100vh);
+        position:relative;  
+        width:calc(100vw); 
+        display:block;      
+        padding:0px;
+        margin:0px;
+        bottom:0%;
+        left:50%;
+        }    
+    
+    .Post-Image-Container{
+        transform: var(--Post-Image-Container-Transform);
+        left:var(--Post-Container-Left-D);
+        height:var(--Post-Size-Height);
+        width:var(--Post-Size-Width); 
+        position:absolute;
+        padding:0px;
+        margin:0px; 
+        top:50%;
+        box-sizing: border-box; 
+        }
+    
+    .Post-Image{
+        transform:translate(-50%, -50%);
+        position:absolute;
+        padding:0px;
+        height:100%;
+        width:100%;
+        margin:0px;
+        left:50%;
+        top:50%;
+        }
+    
+    .Post-Image-Container-Projection{
+        position:absolute;
+        height:100%;
+        padding:0px; 
+        width:100%;
+        margin:0px; 
+        box-sizing:border-box; 
+        }
+    
+    .Comment-Container{ 
+        height:var(--Comment-Container-Height);
+        width:var(--Comment-Container-Width);
+        left:var(--Comment-Container-Left-D);  
+        top:var(--Comment-Container-Top-D);  
+        text-align:justify;
+        position:absolute;
+        padding:0px;
+        margin:0px; 
+        box-sizing: border-box;
+        }
+    
+    .Comment-Text{   
+        margin-right:var(--Comment-Text-Margin-R);
+        margin-left:var(--Comment-Text-Margin-L);
+        font-size:var(--Comment-Font-Size);
+        font-weight:400;
+        color:#0f1419;
+        cursor:pointer;
+        }   
+    
+    .User-Container{
+        width:calc(100% - var(--User-Container-Left-D)); 
+        left:var(--User-Container-Left-D);
+        height:var(--User-Icon-Height);
+        padding:0px; 
+        margin:0px;
+        box-sizing: border-box; position:absolute; 
+        }
+    
+    .User-Icon{
+        height:var(--User-Icon-Height);
+        position:absolute;
+        cursor:pointer;
+        z-index:3000;
+        opacity:0.9;
+        padding:0px;
+        margin:0px;
+        left:0%;
+        top:0%;
+        }
+    
+    .User-Name{
+        left:calc(var(--User-Icon-Height) + 2%);  
+        font-size:var(--User-Name-Font-Size);
+        font-family: "Mali", serif;
+        transform:translateY(-50%);
+        position:absolute;
+        font-weight:bold;
+        color:#0f1419;
+        cursor:pointer;
+        padding:0px;
+        margin:0px;
+        top:50%;
+        }
+    
+    .Date-Container{
+        height:var(--Date-Icon-Height);
+        position:absolute;
+        opacity:0.6;
+        width:99%; 
+        box-sizing:border-box;
+        }
+    
+    .Date-Icon{
+        height:var(--Date-Icon-Height);
+        transform:translateY(-50%); 
+        position:absolute; 
+        padding:0px; 
+        margin:0px;
+        top:50%;
+        left:0%;
+        }
+            
+    .Date-Text{ 
+        left: calc(var(--Date-Icon-Height) + 1%);
+        font-size:var(--Date-Font-Size);
+        font-family: "Mali", serif;
+        transform:translateY(-50%); 
+        position:absolute;
+        font-weight:bold;
+        cursor:pointer;
+        padding:0px;  
+        margin:0px; 
+        top:50%;            
+        }
+    
+    .Filter-Menu{    
+        border-right: 1px solid rgba(0, 0, 0, 0.2);
+        transition: left 1s ease-in-out;
+        color:rgba(0, 0, 0, 1);
+        background-color:#fff;
+        font-weight:bolder;
+        position:fixed;
+        height:100%;
+        left:-51vw; 
+        width:50vw;
+        z-index:10;   
+        top:0%;
+        }
+    
+    .CloseFilterButton {
+        height:var(--Close-MenuButton-Height);
+        width:var(--Close-MenuButton-Height);
+        position:absolute;
+        cursor:pointer;
+        opacity:0.5;
+        z-index:11;
+        padding:0;
+        margin:0;
+        right:0;
+        top:0;
+        }
+        
+    .CloseFilterButton > img {
+        height:var(--Menu-Icons-Height);
+        position: absolute;
+        padding-left:0px;
+        text-align:left;
+        margin:6px;
+        z-index:11;
+        right:0;
+        top:0;
+        }
+        
+    .Menu-Elements{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        height:var(--Menu-Elements-Height);
+        background-color:white; 
+        position:absolute;
+        cursor:pointer;
+        width:100%;
+        z-index:10;
+        left:0%;
+        top:0%; 
+        }
+    
+    .Menu-Elements > h1{
+        font-size:var(--Menu-Font-Size);
+        position:absolute;
+        padding:0px; 
+        opacity:0.5;
+        margin:0px;
+        }    
+    
+    #TW1, #TW4, #TW5{ left:0%; text-align:center; width:100%; transform:translateY(-50%); top:50%;}
+    
+    #TW2, #TW3{ text-align:left; left: 5%; width: calc(100% - var(--Menu-Font-Left-D)); top:3%;}
+                    
+    #Menu-Element-1{ top:var(--Menu-Element1-Distance);}
+    
+    #Menu-Element-2{ top:var(--Menu-Element2-Distance);}
+    
+    #Menu-Element-3{ top:var(--Menu-Element3-Distance);}
+    
+    #Menu-Element-4{ top:var(--Menu-Element4-Distance); background-color: #fafafa;}
+    
+    #Menu-Element-5{ top:var(--Menu-Element5-Distance); background-color: #fafafa;}
+    
+    .Selector-Element{
+        font-size:var(--Menu-Font-Size); 
+        transform:translateY(100%);
+        border:1px solid #000;
+        position:absolute;
+        border-radius:5px;
+        font-weight:bold;
+        cursor:pointer;
+        opacity:0.5;
+        z-index:11;
+        width:auto;
+        bottom:50%; 
+        left:5%;
+        }
+        
+    option{ font: bold var(--Option-Font-Size); z-index:11;}
+  </style>
+
+</head>
+<body>
+
+  <div class="Container-Header">
+    <img alt="Logo-Image" src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/Logo.png" class="Logo" onclick="location.href='https://sbpa-1106.github.io/SB_P1_C0_R0/P1_C0_R0.html'">
+    <img alt="Icon" src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/Home.png" class="BackHomeButton">
+    <img alt="Icon" src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/Filter.png" class="OpenFilterButton">
+  </div>
+
+
+  <div class="Filter-Menu">
+    <div class="Menu-Elements" id="Menu-Element-1"><h1 id="TW1">Godina: 2025</h1></div><!--Center-->
+    <div class="Menu-Elements" id="Menu-Element-2">  <h1 id="TW2">Sezona:</h1>
+      <select class="Selector-Element" id="Season-Selector">
+        <option value="All">Sve</option>
+        <option value="Spring" id="TW6">Proljeće</option>
+        <option value="Summer" id="TW7">Ljeto</option>
+        <option value="Autumn" id="TW8">Jesen</option>
+        <option value="Winter" id="TW9">Zima</option> 
+      </select>
+    </div>
+    <div class="Menu-Elements" id="Menu-Element-3"><h1 id="TW3">Mjesec:</h1>
+      <select class="Selector-Element" id="Month-Selector">
+        <option value="All">Sve</option>
+        <option value="January" id="TW10">Siječanj</option>
+        <option value="February" id="TW11">Veljača</option>
+        <option value="March" id="TW12">Ožujak</option>
+        <option value="April" id="TW13">Travanj</option>
+        <option value="May" id="TW14">Svibanj</option>
+        <option value="June" id="TW15">Lipanj</option>
+        <option value="July" id="TW16">Srpanj</option>
+        <option value="August" id="TW17">Kolovoz</option>
+        <option value="September" id="TW18">Rujan</option>
+        <option value="October" id="TW19">Listopad</option>
+        <option value="November" id="TW20">Studeni</option>
+        <option value="December" id="TW21">Prosinac</option>
+      </select>
+    </div>
+
+    <div class="Menu-Elements" id="Menu-Element-4"><h1 id="TW4">Poništi Postavke</h1></div><!--Center-->
+    <div class="Menu-Elements" id="Menu-Element-5"><h1 id="TW5">Koristi Postavke</h1></div><!--Center-->
+
+    <div class="CloseFilterButton">
+      <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/Close.png">
+    </div>
+  </div>
+
+  <div class="Copyright notranslate">Copyright ©: Kamenska-Knjiga Group 2025</div>
+
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Post-5~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div class="Post" data-Month="January" data-Season="Winter" data-Format="0" data-EmptySlot="0">
+  <div class="Post-Image-Container">
+    <div class="Date-Container">
+      <div class="Date-Text notranslate">01.01.2025</div>
+        <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/Date.png" class="Date-Icon" >
+      </div>
+      <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Example-Posts_C0_G@main/Example-Post-1.jpg" class="Post-Image" loading="lazy">
+
+      <div class="Post-Image-Container-Projection">
+          <div class="User-Container">
+              <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/User.png" class="User-Icon"> 
+              <div class="User-Name notranslate">Kamenska-Knjiga Group</div>
+          </div>
+          <div class="Comment-Container">
+              <div class="Comment-Text">
+                Ovo je primjer za komentar <span class="notranslate">💬</span>. 
+                Ovo bi mogao biti tvoj komentar i tvoja slika! Pošalji i ti svoju sliku i podijeli je s drugim planinarima <span class="notranslate">🌎</span>. 
+                Već se veselimo tebi! <span class="notranslate">😄</span> #Kamešnica #Livno #Kamenska-Knjiga
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Post-4~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div class="Post" data-Month="January" data-Season="Winter" data-Format="0" data-EmptySlot="0">
+  <div class="Post-Image-Container">
+    <div class="Date-Container">
+      <div class="Date-Text notranslate">01.01.2025</div>
+        <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/Date.png" class="Date-Icon" >
+      </div>
+      <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Example-Posts_C0_G@main/Example-Post-2.jpg" class="Post-Image" loading="lazy">
+
+      <div class="Post-Image-Container-Projection">
+          <div class="User-Container">
+              <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/User.png" class="User-Icon"> 
+              <div class="User-Name notranslate">Kamenska-Knjiga Group</div>
+          </div>
+          <div class="Comment-Container">
+              <div class="Comment-Text">
+                Ovo je primjer za komentar <span class="notranslate">💬</span>. 
+                Ovo bi mogao biti tvoj komentar i tvoja slika! Pošalji i ti svoju sliku i podijeli je s drugim planinarima <span class="notranslate">🌎</span>. 
+                Već se veselimo tebi! <span class="notranslate">😄</span> #Kamešnica #Livno #Kamenska-Knjiga
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Post-3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div class="Post" data-Month="January" data-Season="Winter" data-Format="0" data-EmptySlot="0">
+  <div class="Post-Image-Container">
+    <div class="Date-Container">
+      <div class="Date-Text notranslate">01.01.2025</div>
+        <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/Date.png" class="Date-Icon" >
+      </div>
+      <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Example-Posts_C0_G@main/Example-Post-3.jpg" class="Post-Image" loading="lazy">
+
+      <div class="Post-Image-Container-Projection">
+          <div class="User-Container">
+              <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/User.png" class="User-Icon"> 
+              <div class="User-Name notranslate">Kamenska-Knjiga Group</div>
+          </div>
+          <div class="Comment-Container">
+              <div class="Comment-Text">
+                Ovo je primjer za komentar <span class="notranslate">💬</span>. 
+                Ovo bi mogao biti tvoj komentar i tvoja slika! Pošalji i ti svoju sliku i podijeli je s drugim planinarima <span class="notranslate">🌎</span>. 
+                Već se veselimo tebi! <span class="notranslate">😄</span> #Kamešnica #Livno #Kamenska-Knjiga
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Post-2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div class="Post" data-Month="January" data-Season="Winter" data-Format="0" data-EmptySlot="0">
+  <div class="Post-Image-Container">
+    <div class="Date-Container">
+      <div class="Date-Text notranslate">01.01.2025</div>
+        <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/Date.png" class="Date-Icon" >
+      </div>
+      <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Example-Posts_C0_G@main/Example-Post-4.jpg" class="Post-Image" loading="lazy">
+
+      <div class="Post-Image-Container-Projection">
+          <div class="User-Container">
+              <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/User.png" class="User-Icon"> 
+              <div class="User-Name notranslate">Kamenska-Knjiga Group</div>
+          </div>
+          <div class="Comment-Container">
+              <div class="Comment-Text">
+                Ovo je primjer za komentar <span class="notranslate">💬</span>. 
+                Ovo bi mogao biti tvoj komentar i tvoja slika! Pošalji i ti svoju sliku i podijeli je s drugim planinarima <span class="notranslate">🌎</span>. 
+                Već se veselimo tebi! <span class="notranslate">😄</span> #Kamešnica #Livno #Kamenska-Knjiga
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Post-1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<div class="Post" data-Month="January" data-Season="Winter" data-Format="0" data-EmptySlot="0">
+  <div class="Post-Image-Container">
+    <div class="Date-Container">
+      <div class="Date-Text notranslate">01.01.2025</div>
+        <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/Date.png" class="Date-Icon" >
+      </div>
+      <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Example-Posts_C0_G@main/Example-Post-5.jpg" class="Post-Image" loading="lazy">
+
+      <div class="Post-Image-Container-Projection">
+          <div class="User-Container">
+              <img src="https://cdn.jsdelivr.net/gh/SBPA-1106/SB_Images_C0_G@main/User.png" class="User-Icon"> 
+              <div class="User-Name notranslate">Kamenska-Knjiga Group</div>
+          </div>
+          <div class="Comment-Container">
+              <div class="Comment-Text">
+                Ovo je primjer za komentar <span class="notranslate">💬</span>. 
+                Ovo bi mogao biti tvoj komentar i tvoja slika! Pošalji i ti svoju sliku i podijeli je s drugim planinarima <span class="notranslate">🌎</span>. 
+                Već se veselimo tebi! <span class="notranslate">😄</span> #Kamešnica #Livno #Kamenska-Knjiga
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+  <script>
+    let CloseFilterButton = document.querySelector(".CloseFilterButton");
+    let SubmitFilterButton = document.querySelector("#Menu-Element-5");
+    let OpenFilterButton = document.querySelector(".OpenFilterButton");
+    let ResetFilterButton = document.querySelector("#Menu-Element-4");
+    let SeasonSelector = document.querySelector("#Season-Selector");
+    let BackHomeButton = document.querySelector(".BackHomeButton");
+    let MonthSelector = document.querySelector("#Month-Selector");
+    let CommentText = document.querySelectorAll(".Comment-Text");
+    let FilterMenu = document.querySelector(".Filter-Menu");
+    
+    CloseFilterButton.addEventListener('click', CloseFilterMenu);
+    OpenFilterButton.addEventListener('click', OpenFilterMenu);
+    BackHomeButton.addEventListener('click', BackHome);
+    
+    SubmitFilterButton.addEventListener('click', SubmitFilter);
+    ResetFilterButton.addEventListener('click', ResetFilter);
+    
+    CommentText.forEach(comment => {
+      const text = comment.textContent;
+      const highlightedText = text.replace(/#(\S+|#+)/g, match => {
+        return '<span style="color:#379BF4;">' + match + '</span>';
+        });
+        comment.innerHTML = highlightedText;
+     });
+    
+    function BackHome(){
+      window.location.href = "https://sbpa-1106.github.io/SB_P1_C0_R0/P1_C0_R0.html";
+      }
+    
+    function OpenFilterMenu(){
+      FilterMenu.style.left = "0vw";
+      }
+    
+    function CloseFilterMenu(){
+      FilterMenu.style.left = "-51vw";
+      }
+    
+    function SubmitFilter(){
+      let Post = document.querySelectorAll(".Post");
+    
+      let SeasonFilter = SeasonSelector.value;
+      let MonthFilter = MonthSelector.value;
+    
+      let AllValue = "All";
+    
+      Post.forEach(function (Post) {
+    
+        let SeasonPost = Post.getAttribute("data-Season");
+        let MonthPost = Post.getAttribute("data-Month");
+    
+        if(  ((SeasonFilter === SeasonPost) || (SeasonFilter === AllValue)) && ((MonthFilter === MonthPost) || (MonthFilter === AllValue))){
+          Post.style.display = "block";
+          }
+    
+        else{
+          Post.style.display = "none";
+          }
+    
+      });
+    
+      CloseFilterMenu();
+    }
+    
+    function ResetFilter(){
+      let Post = document.querySelectorAll(".Post");
+    
+      Post.forEach(function (Post) {
+      Post.style.display = "block";
+      });
+    
+      SeasonSelector.selectedIndex = 0;
+      MonthSelector.selectedIndex = 0;
+    
+      CloseFilterMenu();
+    } 
+    
+    function Translation() {
+      let HTMLLangTag = document.documentElement.lang;
+      
+      if (HTMLLangTag == 'hr') {
+        document.getElementById("TW1").innerHTML = "Godina: 2025";
+        document.getElementById("TW2").innerHTML = "Sezona:";
+        document.getElementById("TW3").innerHTML = "Mjesec:";
+        document.getElementById("TW4").innerHTML = "Poništi Postavke";
+        document.getElementById("TW5").innerHTML = "Koristi Postavke";
+    
+        document.getElementById("TW6").innerHTML = "Proljeće";
+        document.getElementById("TW7").innerHTML = "Ljeto";
+        document.getElementById("TW8").innerHTML = "Jesen";
+        document.getElementById("TW9").innerHTML = "Zima";
+    
+        document.getElementById("TW10").innerHTML = "Siječanj";
+        document.getElementById("TW11").innerHTML = "Veljača";
+        document.getElementById("TW12").innerHTML = "Ožujak";
+        document.getElementById("TW13").innerHTML = "Travanj";
+        document.getElementById("TW14").innerHTML = "Svibanj";
+        document.getElementById("TW15").innerHTML = "Lipanj";
+        document.getElementById("TW16").innerHTML = "Srpanj";
+        document.getElementById("TW17").innerHTML = "Kolovoz";
+        document.getElementById("TW18").innerHTML = "Rujan";
+        document.getElementById("TW19").innerHTML = "Listopad";
+        document.getElementById("TW20").innerHTML = "Studeni";
+        document.getElementById("TW21").innerHTML = "Prosinac";
+      }
+    
+      if (HTMLLangTag == 'en') {
+        document.getElementById("TW1").innerHTML = "Year: 2025";
+        document.getElementById("TW2").innerHTML = "Season:";
+        document.getElementById("TW3").innerHTML = "Month:";
+        document.getElementById("TW4").innerHTML = "Reset";
+        document.getElementById("TW5").innerHTML = "Submit";
+    
+        document.getElementById("TW6").innerHTML = "Spring";
+        document.getElementById("TW7").innerHTML = "Summer";
+        document.getElementById("TW8").innerHTML = "Autumn";
+        document.getElementById("TW9").innerHTML = "Winter";
+    
+        document.getElementById("TW10").innerHTML = "January";
+        document.getElementById("TW11").innerHTML = "February";
+        document.getElementById("TW12").innerHTML = "March";
+        document.getElementById("TW13").innerHTML = "April";
+        document.getElementById("TW14").innerHTML = "May";
+        document.getElementById("TW15").innerHTML = "June";
+        document.getElementById("TW16").innerHTML = "July";
+        document.getElementById("TW17").innerHTML = "August";
+        document.getElementById("TW18").innerHTML = "September";
+        document.getElementById("TW19").innerHTML = "October";
+        document.getElementById("TW20").innerHTML = "November";
+        document.getElementById("TW21").innerHTML = "December";
+      }
+    
+      if (HTMLLangTag == 'de') {
+        document.getElementById("TW1").innerHTML = "Jahr: 2025";
+        document.getElementById("TW2").innerHTML = "Jahreszeit:";
+        document.getElementById("TW3").innerHTML = "Monat:";
+        document.getElementById("TW4").innerHTML = "Zurücksetzen";
+        document.getElementById("TW5").innerHTML = "Übernehmen";
+    
+        document.getElementById("TW6").innerHTML = "Frühling";
+        document.getElementById("TW7").innerHTML = "Sommer";
+        document.getElementById("TW8").innerHTML = "Herbst";
+        document.getElementById("TW9").innerHTML = "Winter";
+    
+        document.getElementById("TW10").innerHTML = "Januar";
+        document.getElementById("TW11").innerHTML = "Februar";
+        document.getElementById("TW12").innerHTML = "März";
+        document.getElementById("TW13").innerHTML = "April";
+        document.getElementById("TW14").innerHTML = "Mai";
+        document.getElementById("TW15").innerHTML = "Juni";
+        document.getElementById("TW16").innerHTML = "Juli";
+        document.getElementById("TW17").innerHTML = "August";
+        document.getElementById("TW18").innerHTML = "September";
+        document.getElementById("TW19").innerHTML = "Oktober";
+        document.getElementById("TW20").innerHTML = "November";
+        document.getElementById("TW21").innerHTML = "Dezember";
+      }
+    }
+    
+    function changeLanguage(lang) {
+      document.documentElement.lang = lang;
+    }
+    
+    const langTagObserver = new MutationObserver(function (mutationsList) {
+      for (let mutation of mutationsList) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
+          Translation(); 
+        }
+      }
+    });
+    
+    const targetNode = document.documentElement;
+    
+    const config = { attributes: true, attributeFilter: ['lang'] };
+    
+    langTagObserver.observe(targetNode, config);
+  </script>
+
+</body>
+</html>
